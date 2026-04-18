@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Download and install CloudflareSpeedTest (v2.3.4)
-RUN curl -L https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.3.4/cfst_linux_amd64.tar.gz -o cfst.tar.gz \
+RUN curl -L https://github.com/XIU2/CloudflareSpeedTest/releases/latest/download/cfst_linux_amd64.tar.gz -o cfst.tar.gz \
     && tar -zxf cfst.tar.gz \
     && rm cfst.tar.gz \
     && chmod +x cfst
