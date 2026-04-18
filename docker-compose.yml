@@ -1,0 +1,11 @@
+services:
+  cf-tester:
+    image: ghcr.io/skylark36/cf_speedtest_hosts:latest
+    container_name: cf-tester
+    restart: always
+    environment:
+      - DOMAINS=example.com
+      - GH_TOKEN=xxx
+      - GIST_ID=xxx
+      - CRON=0 0 * * *
+
