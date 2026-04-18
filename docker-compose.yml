@@ -1,7 +1,7 @@
 services:
-  cf-tester:
-    image: ghcr.io/skylark36/cf_speedtest_hosts:latest
-    container_name: cf-tester
+  cf-speedtest-hosts:
+    image: ghcr.io/skylark36/cf-speedtest-hosts:latest
+    container_name: cf-speedtest-hosts
     restart: always
     environment:
       - DOMAINS=example.com

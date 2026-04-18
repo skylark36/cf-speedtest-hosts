@@ -16,7 +16,7 @@ The tool is configured via environment variables:
 
 | Variable | Description | Default |
 | :--- | :--- | :--- |
-| `DOMAINS` | Comma-separated list of domains to map (e.g., `bw.966188.xyz`) | - |
+| `DOMAINS` | Comma-separated list of domains to map (e.g., `example.com`) | - |
 | `GH_TOKEN` | GitHub Personal Access Token with `gist` scope | - |
 | `GIST_ID` | The ID of the Gist you want to update | - |
 | `CRON` | Cron expression for the execution interval | `0 0 * * *` |
@@ -36,15 +36,15 @@ Create a `docker-compose.yml` file:
 
 ```yaml
 services:
-  cf-tester:
-    image: ghcr.io/${GITHUB_REPOSITORY_OWNER}/cf-tester:latest
-    container_name: cf-tester
+  cf-speedtest-hosts:
+    image: ghcr.io/skylark36/cf-speedtest-hosts:latest
+    container_name: cf-speedtest-hosts
     restart: always
     environment:
       - DOMAINS=your.domain.com
       - GH_TOKEN=your_github_personal_access_token
       - GIST_ID=your_gist_id
-      - CRON=0 * * * *  # Every hour
+      - CRON=0 3 * * *  # Every day
 ```
 
 Launch the service:

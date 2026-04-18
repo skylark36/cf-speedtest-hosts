@@ -12,3 +12,4 @@ wheels/
 cfst
 ip.txt
 result.csv
+.env
