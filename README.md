@@ -1,40 +1,40 @@
-# Cloudflare Speed Test Gist Updater
+# Cloudflare 测速与 Gist 自动更新工具
 
-English | [简体中文](README_zh.md)
+[English](README_en.md) | 简体中文
 
-A lightweight tool that periodically runs [CloudflareSpeedTest](https://github.com/XIU2/CloudflareSpeedTest) to find the fastest Cloudflare IPs, updates a `hosts` file, and syncs it to a GitHub Gist.
+这是一个轻量级的工具，可以定期运行 [CloudflareSpeedTest](https://github.com/XIU2/CloudflareSpeedTest) 来获取你当前网络环境下最快的 Cloudflare IP，自动生成 `hosts` 内容并同步到 GitHub Gist。
 
-## 🚀 Features
+## 🚀 功能特点
 
-- **Automated Speed Testing**: Periodically checks for the fastest Cloudflare IPs based on your current network.
-- **Dynamic Hosts Generation**: Maps your specified domains to the top 2 fastest IPs.
-- **GitHub Gist Sync**: Automatically pushes the updated hosts content to a private or public Gist.
-- **Dockerized**: Easy deployment with Docker and Docker Compose.
-- **Cron Scheduling**: Flexible execution intervals using standard cron expressions.
+- **自动测速**：根据你当前的网络环境，定期寻找最快的 Cloudflare IP。
+- **动态 Hosts 生成**：将你指定的域名映射到测试出的最快 IP（默认取前 2 个）。
+- **GitHub Gist 同步**：自动将更新后的 hosts 内容推送到你的 GitHub Gist（支持公开或私有）。
+- **容器化部署**：支持 Docker 和 Docker Compose，一键部署。
+- **定时任务**：支持标准的 Cron 表达式，灵活配置执行频率。
 
-## 🛠️ Configuration
+## 🛠️ 配置说明
 
-The tool is configured via environment variables:
+工具通过环境变量进行配置：
 
-| Variable | Description | Default |
+| 变量名 | 描述 | 默认值 |
 | :--- | :--- | :--- |
-| `DOMAINS` | Comma-separated list of domains to map (e.g., `example1.com,example2.com`) | - |
-| `GH_TOKEN` | GitHub Personal Access Token with `gist` scope | - |
-| `GIST_ID` | The ID of the Gist you want to update | - |
-| `CRON` | Cron expression for the execution interval | `0 0 * * *` |
-| `GIST_FILENAME` | Name of the file in the Gist | `hosts.txt` |
-| `CF_ST_ARGS` | Extra arguments for `cfst` | `-dn 10 -p 0 -tl 300 -tll 5` |
+| `DOMAINS` | 需要解析的域名列表，逗号分隔 (例如：`example1.com,example2.com`) | - |
+| `GH_TOKEN` | 具有 `gist` 权限的 GitHub 个人访问令牌 (PAT) | - |
+| `GIST_ID` | 需要更新的 Gist ID | - |
+| `CRON` | 定时任务的 Cron 表达式 | `0 0 * * *` |
+| `GIST_FILENAME` | Gist 中保存的文件名 | `hosts.txt` |
+| `CF_ST_ARGS` | 传递给 `cfst` 的额外参数 | `-dn 10 -p 0 -tl 300 -tll 5` |
 
-## 📦 Getting Started
+## 📦 快速开始
 
-### 1. Preparation
+### 1. 准备工作
 
-- **GitHub Token**: Go to [GitHub Settings -> Tokens](https://github.com/settings/tokens) and create a token with `gist` permissions.
-- **Gist ID**: Create a new Gist at [gist.github.com](https://gist.github.com/) and copy the ID from the URL.
+- **GitHub Token**: 前往 [GitHub Settings -> Tokens](https://github.com/settings/tokens) 创建一个具有 `gist` 权限的 Token。
+- **Gist ID**: 在 [gist.github.com](https://gist.github.com/) 创建一个新的 Gist，从 URL 的末尾复制那串十六进制 ID。
 
-### 2. Run with Docker Compose
+### 2. 使用 Docker Compose 运行
 
-Create a `docker-compose.yml` file:
+创建 `docker-compose.yml` 文件：
 
 ```yaml
 services:
@@ -46,31 +46,31 @@ services:
       - DOMAINS=your.domain.com
       - GH_TOKEN=your_github_personal_access_token
       - GIST_ID=your_gist_id
-      - CRON=0 3 * * *  # Every day
+      - CRON=0 3 * * *  # 每天凌晨 3 点运行
 ```
 
-Launch the service:
+启动服务：
 
 ```bash
 docker-compose up -d
 ```
 
-### 3. Local Testing (Optional)
+### 3. 本地测试 (可选)
 
-If you have Python 3.12 installed, you can run it locally:
+如果你本地安装了 Python 3.12，可以直接运行：
 
 ```bash
-# Install dependencies
+# 安装依赖
 pip install -r requirements.txt
 
-# Download the cfst binary for your platform
-# example for linux-amd64:
-curl -L https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.3.4/cfst_linux_amd64.tar.gz | tar -zxf - cfst
+# 下载对应平台的 cfst 二进制文件
+# 以 Linux amd64 为例：
+curl -L https://github.com/XIU2/CloudflareSpeedTest/releases/latest/download/cfst_linux_amd64.tar.gz | tar -zxf - cfst
 
-# Create a .env file with your variables
+# 创建 .env 文件并配置变量，然后运行
 python main.py
 ```
 
-## 📜 License
+## 📜 开源协议
 
 MIT License
