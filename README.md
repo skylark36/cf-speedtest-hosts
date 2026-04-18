@@ -1,5 +1,7 @@
 # Cloudflare Speed Test Gist Updater
 
+English | [简体中文](README_zh.md)
+
 A lightweight tool that periodically runs [CloudflareSpeedTest](https://github.com/XIU2/CloudflareSpeedTest) to find the fastest Cloudflare IPs, updates a `hosts` file, and syncs it to a GitHub Gist.
 
 ## 🚀 Features
@@ -16,7 +18,7 @@ The tool is configured via environment variables:
 
 | Variable | Description | Default |
 | :--- | :--- | :--- |
-| `DOMAINS` | Comma-separated list of domains to map (e.g., `example.com`) | - |
+| `DOMAINS` | Comma-separated list of domains to map (e.g., `example1.com,example2.com`) | - |
 | `GH_TOKEN` | GitHub Personal Access Token with `gist` scope | - |
 | `GIST_ID` | The ID of the Gist you want to update | - |
 | `CRON` | Cron expression for the execution interval | `0 0 * * *` |
