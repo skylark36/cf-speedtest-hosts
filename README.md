@@ -1,12 +1,12 @@
-# Cloudflare 测速与 Gist 自动更新工具
+# Cloudflare IP 优选并生成 hosts
 
 [English](README_en.md) | 简体中文
 
-这是一个轻量级的工具，可以定期运行 [CloudflareSpeedTest](https://github.com/XIU2/CloudflareSpeedTest) 来获取你当前网络环境下最快的 Cloudflare IP，自动生成 `hosts` 内容并同步到 GitHub Gist。
+可以定期运行 [CloudflareSpeedTest](https://github.com/XIU2/CloudflareSpeedTest) 来获取当前网络环境下最快的 Cloudflare IP，自动生成 `hosts` 文件并同步到 GitHub Gist。
 
 ## 🚀 功能特点
 
-- **自动测速**：根据你当前的网络环境，定期寻找最快的 Cloudflare IP。
+- **自动测速**：根据当前的网络环境，定期寻找最快的 Cloudflare IP。
 - **动态 Hosts 生成**：将你指定的域名映射到测试出的最快 IP（默认取前 2 个）。
 - **GitHub Gist 同步**：自动将更新后的 hosts 内容推送到你的 GitHub Gist（支持公开或私有）。
 - **容器化部署**：支持 Docker 和 Docker Compose，一键部署。

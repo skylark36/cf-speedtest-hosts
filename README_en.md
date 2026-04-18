@@ -1,4 +1,4 @@
-# Cloudflare Speed Test Gist Updater
+# Cloudflare IP Tester and Hosts Generation
 
 English | [简体中文](README.md)
 
@@ -6,8 +6,8 @@ A lightweight tool that periodically runs [CloudflareSpeedTest](https://github.c
 
 ## 🚀 Features
 
-- **Automated Speed Testing**: Periodically checks for the fastest Cloudflare IPs based on your current network.
-- **Dynamic Hosts Generation**: Maps your specified domains to the top 2 fastest IPs.
+- **Automated Speed Testing**: Periodically checks for the fastest Cloudflare IPs based on the current network.
+- **Dynamic Hosts Generation**: Maps specified domains to the top 2 fastest IPs.
 - **GitHub Gist Sync**: Automatically pushes the updated hosts content to a private or public Gist.
 - **Dockerized**: Easy deployment with Docker and Docker Compose.
 - **Cron Scheduling**: Flexible execution intervals using standard cron expressions.
